@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="175mm" height="85mm" viewBox="0 0 175 85"
+     font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <style type="text/css"><![CDATA[
+      .stage-title { font-size: 2.05px; font-weight: 700; fill: #000; }
+      .body { font-size: 1.75px; fill: #222; }
+      .body-sm { font-size: 1.55px; fill: #222; }
+      .tiny { font-size: 1.35px; fill: #444; }
+      .box { fill: #f5f5f5; stroke: #404040; stroke-width: 0.12; }
+      .nested { fill: #fff; stroke: #262626; stroke-width: 0.12; }
+      .highlight { fill: #e8e8e8; stroke: #262626; stroke-width: 0.16; }
+      .robust { fill: #efefef; stroke: #404040; stroke-width: 0.12; }
+      .arrow { fill: none; stroke: #404040; stroke-width: 0.14; }
+      .arrow-dashed { fill: none; stroke: #404040; stroke-width: 0.11; stroke-dasharray: 0.5 0.35; }
+    ]]></style>
+    <marker id="arrowhead" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto">
+      <path d="M0,0 L4,2 L0,4 z" fill="#404040"/>
+    </marker>
+  </defs>
+
+  <!-- white background -->
+  <rect width="175" height="85" fill="#ffffff"/>
+
+  <!-- ========== STAGE 1 ========== -->
+  <rect class="box" x="1.5" y="15.5" width="40.5" height="53.5" rx="0.4"/>
+  <text class="stage-title" x="3.3" y="18.2">STAGE 1  Historical FX data</text>
+  <text class="body" x="3.3" y="21.8"><tspan font-weight="700">National Bank of Kazakhstan</tspan></text>
+  <text class="body" x="3.3" y="24.0">Daily USD/KZT and EUR/KZT</text>
+  <text class="body" x="3.3" y="26.2">20102025</text>
+  <text class="body" x="3.3" y="30.0"><tspan font-weight="700">Preprocessing</tspan></text>
+  <text class="body" x="3.3" y="32.2">" weekday observations</text>
+  <text class="body" x="3.3" y="34.4">" log returns</text>
+  <text class="body" x="3.3" y="36.6">" post-float baseline:</text>
+  <text class="body" x="6.0" y="38.8">2015-08-20 to 2025-12-31</text>
+  <text class="body" x="3.3" y="42.6"><tspan font-weight="700">Statistical diagnostics</tspan></text>
+  <text class="body" x="3.3" y="44.8">" non-normality / heavy tails</text>
+  <text class="body" x="3.3" y="47.0">" volatility clustering</text>
+  <text class="body" x="3.3" y="49.2">" temporal dependence</text>
+  <text class="body" x="3.3" y="51.4">" USD/EUR joint dependence</text>
+
+  <!-- ========== STAGE 2 ========== -->
+  <rect class="box" x="45.5" y="15.5" width="40.5" height="53.5" rx="0.4"/>
+  <text class="stage-title" x="47.3" y="18.2">STAGE 2  FX scenario generation</text>
+  <text class="body" x="47.3" y="21.8"><tspan font-weight="700">Simulation model comparison</tspan></text>
+  <text class="body" x="47.3" y="24.0">" IID historical bootstrap</text>
+  <text class="body" x="47.3" y="26.2">" stationary bootstrap: L = 5, 10, 20</text>
+  <text class="body" x="47.3" y="28.4">" moving-block bootstrap</text>
+  <text class="body" x="47.3" y="30.6">" Student-t</text>
+  <text class="body" x="47.3" y="32.8">" Gaussian benchmark</text>
+
+  <!-- Monte Carlo outer -->
+  <rect class="nested" x="47.3" y="35.0" width="36.9" height="25.5" rx="0.3"/>
+  <text class="body" x="48.1" y="37.2"><tspan font-weight="700">Monte Carlo framework</tspan></text>
+  <text class="body" x="48.1" y="39.6">10,000 joint FX scenarios</text>
+
+  <!-- Selected DGP inside MC -->
+  <rect class="highlight" x="48.3" y="41.5" width="34.9" height="13.5" rx="0.3"/>
+  <text class="body" x="49.1" y="43.7"><tspan font-weight="700">Selected DGP (path generator)</tspan></text>
+  <text class="body" x="49.1" y="46.0">Joint stationary bootstrap</text>
+  <text class="body" x="49.1" y="48.2">Expected block length L = 20</text>
+  <text class="tiny" x="49.1" y="50.4">generates each simulated FX path</text>
+  <!-- mini flow -->
+  <line class="arrow" x1="49.5" y1="53.2" x2="55.0" y2="53.2" marker-end="url(#arrowhead)"/>
+  <text class="tiny" x="50.0" y="52.5">hist. returns</text>
+  <line class="arrow" x1="55.5" y1="53.2" x2="61.0" y2="53.2" marker-end="url(#arrowhead)"/>
+  <text class="tiny" x="55.8" y="52.5">SB(L=20)</text>
+  <line class="arrow" x1="61.5" y1="53.2" x2="67.0" y2="53.2" marker-end="url(#arrowhead)"/>
+  <text class="tiny" x="62.5" y="52.5">FX path</text>
+
+  <!-- ========== STAGE 3 ========== -->
+  <rect class="box" x="90.5" y="15.5" width="40.5" height="53.5" rx="0.4"/>
+  <text class="stage-title" x="92.3" y="18.2">STAGE 3  Household cash-flow simulation</text>
+  <text class="body" x="92.3" y="21.8">Synthetic profiles P1P4</text>
+  <text class="body" x="92.3" y="25.2"><tspan font-weight="700">Each month:</tspan></text>
+  <text class="body-sm" x="92.3" y="27.4">1. observe FX</text>
+  <text class="body-sm" x="92.3" y="29.2">2. receive income (native currency)</text>
+  <text class="body-sm" x="92.3" y="31.0">3. pay matching-currency expenses</text>
+  <text class="body-sm" x="92.3" y="32.8">4. compute expenditure gap</text>
+  <text class="body-sm" x="92.3" y="34.6">5. liquidate savings if needed</text>
+  <text class="body-sm" x="92.3" y="36.4">6. record uncovered expenditure U<tspan baseline-shift="sub" font-size="1.3px">t</tspan></text>
+  <text class="body-sm" x="92.3" y="38.2">7. rebalance if required</text>
+  <text class="body" x="92.3" y="43.0">Initial savings allocation:</text>
+  <text class="body" x="92.3" y="45.4">w = (w<tspan baseline-shift="sub" font-size="1.3px">KZT</tspan>, w<tspan baseline-shift="sub" font-size="1.3px">USD</tspan>, w<tspan baseline-shift="sub" font-size="1.3px">EUR</tspan>)</text>
+
+  <!-- ========== STAGE 4 ========== -->
+  <rect class="box" x="135.5" y="15.5" width="40.5" height="53.5" rx="0.4"/>
+  <text class="stage-title" x="137.3" y="18.2">STAGE 4  Downside risk &amp; optimization</text>
+  <text class="body" x="137.3" y="21.8">Cumulative household loss:</text>
+  <text class="body" x="137.3" y="24.2">L<tspan baseline-shift="sub" font-size="1.3px">s</tspan> = �<tspan baseline-shift="sub" font-size="1.3px">t</tspan> U<tspan baseline-shift="sub" font-size="1.3px">t,s</tspan></text>
+  <text class="body" x="137.3" y="28.0"><tspan font-weight="700">Risk measures</tspan></text>
+  <text class="body" x="137.3" y="30.2">" P(shortfall)</text>
+  <text class="body" x="137.3" y="32.4">" VaR<tspan baseline-shift="sub" font-size="1.3px">95</tspan></text>
+  <text class="body" x="137.3" y="34.6">" CVaR<tspan baseline-shift="sub" font-size="1.3px">95</tspan> <tspan font-weight="700">(primary)</tspan></text>
+  <text class="body" x="137.3" y="38.4"><tspan font-weight="700">Optimization</tspan></text>
+  <text class="body" x="137.3" y="40.6">min CVaR<tspan baseline-shift="sub" font-size="1.3px">95</tspan>(L(w))</text>
+  <text class="body" x="137.3" y="42.8">over KZT/USD/EUR weights</text>
+  <text class="body" x="137.3" y="46.6"><tspan font-weight="700">Benchmarks:</tspan> all KZT, all USD, all EUR,</text>
+  <text class="body" x="137.3" y="48.8">equal weight, income matched, expenditure matched</text>
+  <rect class="highlight" x="137.3" y="51.0" width="36.9" height="4.2" rx="0.3"/>
+  <text class="body" x="138.1" y="53.6"><tspan font-weight="700">Output:</tspan> optimal &amp; near-optimal allocations</text>
+
+  <!-- ========== MAIN ARROWS ========== -->
+  <line class="arrow" x1="42.0" y1="42.2" x2="45.5" y2="42.2" marker-end="url(#arrowhead)"/>
+  <line class="arrow" x1="86.0" y1="42.2" x2="90.5" y2="42.2" marker-end="url(#arrowhead)"/>
+  <line class="arrow" x1="131.0" y1="42.2" x2="135.5" y2="42.2" marker-end="url(#arrowhead)"/>
+
+  <!-- FX paths: Stage 2 MC -> Stage 3 -->
+  <path class="arrow-dashed" d="M 65 60.5 L 65 66.5 L 105 66.5 L 105 15.5" marker-end="url(#arrowhead)"/>
+  <text class="tiny" x="78" y="65.8">simulated FX paths</text>
+
+  <!-- ========== ROBUSTNESS STRIP ========== -->
+  <rect class="robust" x="1.5" y="1.5" width="174.5" height="10.5" rx="0.4"/>
+  <text class="stage-title" x="3.3" y="4.2">Robustness analysis</text>
+  <text class="body" x="3.3" y="7.8">household stress  "  SB10 / SB56 / IID  "  20202025 estimation window  "  monthly / quarterly / no rebalancing  "  transaction costs: 0%, 0.25%, 0.50%, 1%</text>
+
+  <!-- robustness connectors -->
+  <path class="arrow-dashed" d="M 60 69 L 60 66.5"/>
+  <path class="arrow-dashed" d="M 110.7 69 L 110.7 66.5"/>
+  <path class="arrow-dashed" d="M 156 69 L 156 66.5"/>
+  <line class="arrow-dashed" x1="40" y1="66.5" x2="135" y2="66.5"/>
+  <line class="arrow-dashed" x1="87.5" y1="66.5" x2="87.5" y2="12" marker-end="url(#arrowhead)"/>
+</svg>

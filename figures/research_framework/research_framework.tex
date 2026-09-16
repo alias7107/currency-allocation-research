@@ -1,0 +1,82 @@
+% Standalone compile:
+%   pdflatex research_framework.tex
+%   dvisvgm --pdf research_framework.pdf -o research_framework.svg
+%
+% Include in paper:
+%   \input{figures/research_framework/research_framework.tikz}
+
+\documentclass[tikz,border=0pt]{standalone}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{
+  arrows.meta,
+  positioning,
+  calc,
+  fit,
+  backgrounds,
+}
+
+% Journal-style palette (grayscale-safe)
+\colorlet{StageFill}{black!4}
+\colorlet{StageLine}{black!75}
+\colorlet{AccentFill}{black!10}
+\colorlet{AccentLine}{black!85}
+\colorlet{RobustFill}{black!6}
+
+\tikzset{
+  >=Latex,
+  stagebox/.style={
+    draw=StageLine,
+    line width=0.45pt,
+    fill=StageFill,
+    rounded corners=1.5pt,
+    inner sep=0pt,
+  },
+  stagetitle/.style={
+    font=\footnotesize\bfseries,
+    text=black,
+  },
+  bodytext/.style={
+    font=\scriptsize,
+    text=black!85,
+    align=left,
+  },
+  bullet/.style={
+    font=\scriptsize,
+    text=black!85,
+    align=left,
+  },
+  flowarrow/.style={
+    ->,
+    line width=0.55pt,
+    draw=StageLine,
+  },
+  nestedbox/.style={
+    draw=AccentLine,
+    line width=0.45pt,
+    fill=white,
+    rounded corners=1pt,
+    inner sep=3pt,
+  },
+  highlightbox/.style={
+    draw=AccentLine,
+    line width=0.65pt,
+    fill=AccentFill,
+    rounded corners=1pt,
+    inner sep=3pt,
+  },
+  robustbox/.style={
+    draw=StageLine,
+    line width=0.45pt,
+    fill=RobustFill,
+    rounded corners=1.5pt,
+    inner sep=4pt,
+  },
+}
+
+\begin{document}
+\input{research_framework.tikz}
+\end{document}
